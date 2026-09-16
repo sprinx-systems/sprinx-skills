@@ -1,5 +1,5 @@
 {
-  "name": "sprinx",
+  "name": "sprinx-system",
   "owner": {
     "name": "Jan Prochazka"
   },
@@ -8,10 +8,10 @@
   },
   "plugins": [
     {
-      "name": "sprinx",
+      "name": "sprinx-skills",
       "source": "./",
       "description": "Skills that apply the Sprinx engineering standard to the repository in front of you.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "workflow"
     }
   ]

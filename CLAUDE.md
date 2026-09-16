@@ -1,6 +1,6 @@
-# claude-skills
+# sprinx-skills
 
-A collection of Claude Code skills, packaged as the plugin `sprinx`. There is no
+A collection of Claude Code skills, packaged as the plugin `sprinx-skills`. There is no
 application code - the deliverable is the skill instructions themselves.
 
 ## Layout
@@ -31,7 +31,7 @@ application code - the deliverable is the skill instructions themselves.
 ## Versioning
 
 - The version lives in `.claude-plugin/plugin.json` (top-level `version`) and in
-  `.claude-plugin/marketplace.json` (`version` of the `sprinx` entry). Both are always
+  `.claude-plugin/marketplace.json` (`version` of the `sprinx-skills` entry). Both are always
   equal.
 - Bump on every merge to `main`: major when a skill is removed or renamed, minor when a
   skill is added or changes behaviour, patch for wording.

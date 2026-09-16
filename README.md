@@ -1,7 +1,7 @@
-# claude-skills
+# sprinx-skills
 
 The Sprinx skill set for [Claude Code](https://claude.com/claude-code), packaged as a
-plugin named **`sprinx`**. The skills apply the Sprinx engineering standard
+plugin named **`sprinx-skills`**. The skills apply the Sprinx engineering standard
 ([engineering/engineering-standards](https://gitlab.sprinx.com/engineering/engineering-standards))
 to whatever repository Claude Code is working in.
 
@@ -12,7 +12,7 @@ themselves.
 
 | Skill | What it does | Invoke with |
 |---|---|---|
-| [`sx-check-sprinx-standards`](skills/sx-check-sprinx-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | explicitly only: "check sprinx standards", `/sprinx:sx-check-sprinx-standards` |
+| [`sx-check-sprinx-standards`](skills/sx-check-sprinx-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | explicitly only: "check sprinx standards", `/sprinx-skills:sx-check-sprinx-standards` |
 
 Every skill is named `sx-*`.
 
@@ -21,14 +21,14 @@ Every skill is named `sx-*`.
 From inside Claude Code:
 
 ```
-/plugin marketplace add sprinx-systems/claude-skills
-/plugin install sprinx@sprinx
+/plugin marketplace add sprinx-systems/sprinx-skills
+/plugin install sprinx-skills@sprinx-system
 ```
 
 To try a working copy without installing it:
 
 ```bash
-claude --plugin-dir /path/to/claude-skills
+claude --plugin-dir /path/to/sprinx-skills
 ```
 
 ## What the skills need
