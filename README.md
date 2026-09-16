@@ -1,2 +1,50 @@
 # claude-skills
-Skillset for CLAUDE
+
+The Sprinx skill set for [Claude Code](https://claude.com/claude-code), packaged as a
+plugin named **`sprinx`**. The skills apply the Sprinx engineering standard
+([engineering/engineering-standards](https://gitlab.sprinx.com/engineering/engineering-standards))
+to whatever repository Claude Code is working in.
+
+The repository contains no application code. The deliverable is the skill instructions
+themselves.
+
+## Skills
+
+| Skill | What it does | Invoke with |
+|---|---|---|
+| [`sx-check-standards`](skills/sx-check-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | "check standards", `/sprinx:sx-check-standards` |
+
+Every skill is named `sx-*`.
+
+## Install
+
+From inside Claude Code:
+
+```
+/plugin marketplace add sprinx-systems/claude-skills
+/plugin install sprinx@sprinx
+```
+
+To try a working copy without installing it:
+
+```bash
+claude --plugin-dir /path/to/claude-skills
+```
+
+## What the skills need
+
+`sx-check-standards` reads the standard from a local clone of `engineering-standards`.
+It looks for one next to the checked repository (`../engineering-standards`) first; if it
+finds none it asks for the path. The checklist is never copied into this repository - it
+is read from the standard at the revision the checked repository is pinned to, so the
+skill cannot drift from the standard it checks against.
+
+## Layout
+
+```
+.claude-plugin/plugin.json        the plugin
+.claude-plugin/marketplace.json   this repository as a marketplace listing that plugin
+skills/<name>/SKILL.md            one directory per skill
+```
+
+Conventions for adding a skill are in [`CLAUDE.md`](CLAUDE.md).
