@@ -12,7 +12,7 @@ themselves.
 
 | Skill | What it does | Invoke with |
 |---|---|---|
-| [`sx-check-standards`](skills/sx-check-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | "check standards", `/sprinx:sx-check-standards` |
+| [`sx-check-sprinx-standards`](skills/sx-check-sprinx-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | explicitly only: "check sprinx standards", `/sprinx:sx-check-sprinx-standards` |
 
 Every skill is named `sx-*`.
 
@@ -33,7 +33,7 @@ claude --plugin-dir /path/to/claude-skills
 
 ## What the skills need
 
-`sx-check-standards` reads the standard from a local clone of `engineering-standards`.
+`sx-check-sprinx-standards` reads the standard from a local clone of `engineering-standards`.
 It looks for one next to the checked repository (`../engineering-standards`) first; if it
 finds none it asks for the path. The checklist is never copied into this repository - it
 is read from the standard at the revision the checked repository is pinned to, so the

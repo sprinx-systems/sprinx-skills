@@ -1,6 +1,6 @@
 ---
-name: sx-check-standards
-description: Check the current repository's local CLAUDE.md against the Sprinx engineering standard (the engineering-standards repository) - the adoption statement in section 0, the layers, the "Answers for this repository" line, every required section 1-9 and "What is right here", the three-state answers, the revision pin in .standard/ - and report each item as met, finding, does not apply or not determined. Read-only. Use when the user asks for it ("check standards", "sx-check-standards", "check CLAUDE.md against the standard", "does our CLAUDE.md meet the engineering standard", "is this repo compliant with engineering-standards"). Writing or filling in a CLAUDE.md, adopting the standard, or moving the pin to a new revision is not this skill - it only checks.
+name: sx-check-sprinx-standards
+description: Check the current repository's local CLAUDE.md against the Sprinx engineering standard (the engineering-standards repository) - the adoption statement in section 0, the layers, the "Answers for this repository" line, every required section 1-9 and "What is right here", the three-state answers, the revision pin in .standard/ - and report each item as met, finding, does not apply or not determined. Read-only. Use ONLY when the user explicitly asks for it ("check sprinx standards", "check the sprinx standards", "run sx-check-sprinx-standards", "use the check sprinx standards skill"). A question about CLAUDE.md or the standard, editing or creating a CLAUDE.md, adopting the standard, or moving the pin to a new revision is not an invocation - handle those directly instead.
 ---
 
 # Check CLAUDE.md against the engineering standard
@@ -13,6 +13,9 @@ revision the repository is pinned to** - and reports. It changes nothing.
 
 ## Hard rules
 
+- **Explicit invocation only.** Run only when the user names this check ("check sprinx
+  standards"). Working on a `CLAUDE.md`, asking about the standard or adopting it is not an
+  invocation - do not start this check on your own.
 - **Read-only.** No edit to `CLAUDE.md`, `MEL.md` or `.standard/`, no new file in the
   working tree, no commit, no branch, no fetch that rewrites anything. Proposed fixes go
   into the report; applying them is a separate request from the user.
