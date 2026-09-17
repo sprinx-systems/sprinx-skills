@@ -13,6 +13,7 @@ themselves.
 | Skill | What it does | Invoke with |
 |---|---|---|
 | [`sx-check-sprinx-standards`](skills/sx-check-sprinx-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | explicitly only: "check sprinx standards", `/sprinx-skills:sx-check-sprinx-standards` |
+| [`sx-check-basic-standards`](skills/sx-check-basic-standards/SKILL.md) | Checks that `CLAUDE.md` answers the eight basic points - branches and which one is production, how to test, how to run locally, the technology stack, how the documentation is structured, the instruction to keep it current, localization, and that the file is in English - that `README.md` exists, and that a bigger project has structured docs under `docs/` linked from the README. Read-only. | explicitly only: "check basic standards", `/sprinx-skills:sx-check-basic-standards` |
 
 Every skill is named `sx-*`.
 
