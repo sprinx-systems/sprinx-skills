@@ -1,9 +1,11 @@
 # sprinx-skills
 
 The Sprinx skill set for [Claude Code](https://claude.com/claude-code), packaged as a
-plugin named **`sprinx-skills`**. The skills apply the Sprinx engineering standard
+plugin named **`sprinx-skills`**. The skills apply the Sprinx way of working - the
+engineering standard
 ([engineering/engineering-standards](https://gitlab.sprinx.com/engineering/engineering-standards))
-to whatever repository Claude Code is working in.
+and the plan / implement / fix workflow - to whatever repository Claude Code is working
+in.
 
 The repository contains no application code. The deliverable is the skill instructions
 themselves.
@@ -14,6 +16,9 @@ themselves.
 |---|---|---|
 | [`sx-check-sprinx-standards`](skills/sx-check-sprinx-standards/SKILL.md) | Reads the repository's local `CLAUDE.md` and checks it against everything the engineering standard requires of it - sections 0-9, the adoption line, layers, the owner line, the revision pin. Read-only; reports every item as met / finding / does not apply / not determined. | explicitly only: "check sprinx standards", `/sprinx-skills:sx-check-sprinx-standards` |
 | [`sx-check-basic-standards`](skills/sx-check-basic-standards/SKILL.md) | Checks that `CLAUDE.md` answers the eight basic points - branches and which one is production, how to test, how to run locally, the technology stack, how the documentation is structured, the instruction to keep it current, localization, and that the file is in English - that `README.md` exists, and that a bigger project has structured docs under `docs/` linked from the README. Read-only. | explicitly only: "check basic standards", `/sprinx-skills:sx-check-basic-standards` |
+| [`sx-brainstorming`](skills/sx-brainstorming/SKILL.md) | Runs the high-level planning phase of a change: gathers context, settles every important decision with the user one round at a time, and writes the agreed specification to `docs/specs/YYYY-MM-DD-feature-name.md` on the main branch. No code. | explicitly only: "brainstorm", `/sprinx-skills:sx-brainstorming` |
+| [`sx-implement-spec`](skills/sx-implement-spec/SKILL.md) | Turns an agreed spec from `docs/specs/` into code without reopening its decisions, runs the repository's own checks, writes implementation notes to `docs/impl/YYYY-MM-DD-feature-name.md`, and pushes the work on its own branch. | explicitly only: "implement spec", `/sprinx-skills:sx-implement-spec` |
+| [`sx-systematic-bugfix`](skills/sx-systematic-bugfix/SKILL.md) | Fixes one bug the disciplined way: reproduce first, find the real root cause, date it as a regression or a bug by design, cover it with a regression test seen failing before the fix, and write the fix report to `docs/fixes/YYYY-MM-DD-bug-name.md`. | explicitly only: "systematic bugfix", `/sprinx-skills:sx-systematic-bugfix` |
 
 Every skill is named `sx-*`.
 

@@ -1,7 +1,7 @@
 {
   "name": "sprinx-skills",
   "description": "Sprinx engineering skill set for Claude Code: skills that apply the Sprinx engineering standard to the repository in front of you.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "Jan Prochazka"
   },
