@@ -187,17 +187,11 @@ git commit -m "docs: spec for <feature name>"
 git push                  # git push -u origin HEAD the first time, if there is no upstream yet
 ```
 
-A spec always gets a commit of its own - it never rides along in a code commit. Work
-that exists only in the checkout it was written in is work nobody else can read, and a
-session's checkout does not outlive the session, so the push is part of the hand-back
-and not an optional extra. Retry a push that failed on a network error up to 4 times,
-backing off 2s, 4s, 8s, 16s. A push the remote rejects is reported with the branch and
-the commit left on it - never force, and never rewrite the branch to get around it.
+The spec gets a commit of its own - it never rides along in a code commit - and the
+push is part of the hand-back. Never force, never rewrite the branch.
 
-The one case to stop at is a checkout sitting on the repository's main branch: the
-spec is not committed there. Say that it is written but uncommitted, and let the user
-say which branch it should go on - do not invent one.
+On a checkout sitting on the repository's main branch, do not commit: say the spec is
+written but uncommitted and let the user say where it goes.
 
-Taking the spec anywhere else - into the main branch, into a pull request - is the
-caller's step. So is implementation: `sx-implement-spec` is a separate session and
-cuts its own branch when it runs.
+Taking the spec further - into the main branch, into a pull request, into code - is
+the caller's step.
