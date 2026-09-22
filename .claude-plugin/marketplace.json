@@ -4,14 +4,14 @@
     "name": "Jan Prochazka"
   },
   "metadata": {
-    "description": "Claude Code skills of Sprinx engineering"
+    "description": "Skills of Sprinx engineering, for Claude Code and Codex"
   },
   "plugins": [
     {
       "name": "sprinx-skills",
       "source": "./",
       "description": "Skills that apply the Sprinx engineering standard to the repository in front of you.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "category": "workflow"
     }
   ]
