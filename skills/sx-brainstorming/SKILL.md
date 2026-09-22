@@ -1,6 +1,6 @@
 ---
 name: sx-brainstorming
-description: Lead the user through high-level planning of a change - gather context, settle every important decision with AskUserQuestion, then write a specification to docs/specs/YYYY-MM-DD-feature-name.md. Use ONLY when the user explicitly asks for it ("brainstorm", "brainstorming", "use the brainstorming skill", "let's brainstorm this", "run sx-brainstorming"). Never start it on your own from an ordinary feature request.
+description: Lead the user through high-level planning of a change - gather context, settle every important decision with the user one question at a time, then write a specification to docs/specs/YYYY-MM-DD-feature-name.md. Use ONLY when the user explicitly asks for it ("brainstorm", "brainstorming", "use the brainstorming skill", "let's brainstorm this", "run sx-brainstorming"). Never start it on your own from an ordinary feature request.
 ---
 
 # Brainstorm a change into a specification
@@ -10,8 +10,20 @@ only deliverable is one document under `docs/specs/`. It produces no code, no
 refactor, no task breakdown and no implementation.
 
 The value of the document is that it records **what the user decided and why**, not
-what you would have decided. Every important choice is put to the user through
-`AskUserQuestion` and answered by the user before the session moves on.
+what you would have decided. Every important choice is put to the user as a
+**decision question** and answered by the user before the session moves on.
+
+**Asking the user.** Where this skill says to put something to the user as a
+**decision question**: one question, 2-4 labelled options, each with a one-line
+description of its trade-off, your recommendation first. Use the structured question
+tool of the agent you are running in where there is one (in Claude Code that is
+`AskUserQuestion`); where there is none, write the question and its options as a
+numbered list in your reply and let the user answer with a number. Either way
+"Other" stays open to the user, and **your turn ends on the question**.
+
+**The repository's instruction file.** Where this skill says `CLAUDE.md`, read
+whichever instruction file the repository actually carries - `CLAUDE.md`,
+`AGENTS.md`, or both when both exist.
 
 ## Hard rules
 
@@ -25,8 +37,9 @@ what you would have decided. Every important choice is put to the user through
   work belongs on was decided before the session started, and never by this skill.
 - **Never commit the spec on the repository's main branch.** Not by switching to it,
   and not by committing there because the checkout happens to be on it.
-- **Never continue past an unanswered question.** After an `AskUserQuestion` call
-  your turn ends - no further tool calls, no edits, no "meanwhile I will...".
+- **Never continue past an unanswered question.** After you ask a decision
+  question your turn ends - no further tool calls, no edits, no "meanwhile I
+  will...".
   Silence, elapsed time and an interruption are not answers.
 - **Never invent an answer.** If the user's reply is ambiguous, ask again rather
   than picking the reading that suits you. If the user answers "Other" with free
@@ -71,12 +84,13 @@ naming, styling, package manager, test framework), nor on implementation detail.
 **Question quality:**
 
 - 2-4 options, mutually exclusive, each a choice someone could actually defend.
-- Every option gets a `description` naming its trade-off, not restating its label.
+- Every option gets a one-line description naming its trade-off, not restating its
+  label.
 - Put your recommendation first and mark it `(Recommended)`. Recommend one; do not
   survey.
-- `header` is <= 12 characters.
-- Use `multiSelect` only when the options genuinely combine.
-- Group at most 2-3 tightly related decisions into one call. Independent decisions
+- Where the question carries a short label of its own, keep it to 12 characters.
+- Let the user choose more than one option only when the options genuinely combine.
+- Group at most 2-3 tightly related decisions into one round. Independent decisions
   get their own round, so an early answer can reshape the later question.
 
 Immediately after each answer comes back, append that round to the spec's
@@ -125,7 +139,7 @@ prompts contradict each other, keep both and note which came later.
 
 ## Decisions
 
-One subsection per AskUserQuestion round, in the order asked.
+One subsection per decision round, in the order asked.
 
 ### <the question, verbatim>
 

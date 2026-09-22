@@ -16,6 +16,18 @@ finding the cause is worth as much as the diff.
 Nothing here assumes a particular project, language or test runner - take those from
 the repository's own `CLAUDE.md` and its manifest.
 
+**Asking the user.** Where this skill says to put something to the user as a
+**decision question**: one question, 2-4 labelled options, each with a one-line
+description of its trade-off, your recommendation first. Use the structured question
+tool of the agent you are running in where there is one (in Claude Code that is
+`AskUserQuestion`); where there is none, write the question and its options as a
+numbered list in your reply and let the user answer with a number. Either way
+"Other" stays open to the user, and **your turn ends on the question**.
+
+**The repository's instruction file.** Where this skill says `CLAUDE.md`, read
+whichever instruction file the repository actually carries - `CLAUDE.md`,
+`AGENTS.md`, or both when both exist.
+
 ## Hard rules
 
 - **Explicit invocation only.** A bug report on its own, however detailed, is not an
@@ -35,8 +47,8 @@ the repository's own `CLAUDE.md` and its manifest.
 - **Never guess where the bug came from.** An origin is what `git blame`, a commit
   diff or a bisect showed. A commit named on a hunch is worse than "unknown", and
   the search for it is time-boxed - see step 4.
-- **Never continue past an unanswered question.** After an `AskUserQuestion` call
-  your turn ends - no further tool calls, no edits.
+- **Never continue past an unanswered question.** After you ask a decision
+  question your turn ends - no further tool calls, no edits.
 - **The report is part of the work.** A fix without
   `docs/fixes/YYYY-MM-DD-bug-name.md` is unfinished.
 - **Never record an ADR for a decision you did not implement.** The *ADR* section
@@ -54,8 +66,8 @@ Write down, before touching anything, in the user's own terms:
 - what the user gave you verbatim: the error text, the stack trace, the steps, the
   screenshot, the failing test name
 
-If any of that is missing and the bug cannot be reproduced without it, ask with
-`AskUserQuestion` - one question, the readings you would otherwise guess between as
+If any of that is missing and the bug cannot be reproduced without it, ask a
+decision question - one question, the readings you would otherwise guess between as
 options - and **end the turn**. Do not start reading code to fill the gap for the
 user.
 
@@ -172,8 +184,8 @@ here.
 Where the smallest change that removes the cause is itself architectural - the fix
 has to move an invariant, change a contract between modules or replace a mechanism,
 because patching in place would leave the cause reachable - that is a decision, and
-it goes in the report's *ADR* section. Decide it with the user through
-`AskUserQuestion` before implementing it, and **end the turn** on the question. A
+it goes in the report's *ADR* section. Decide it with the user through a decision
+question before implementing it, and **end the turn** on the question. A
 bug fixed in place decides nothing and needs no ADR.
 
 ## 7. Write the fix report

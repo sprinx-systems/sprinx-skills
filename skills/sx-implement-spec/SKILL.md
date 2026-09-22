@@ -13,6 +13,18 @@ records what really happened in `docs/impl/`.
 The spec is the authority. Its **Decisions** and **Architecture decisions** were
 settled with the user and are not reopened here.
 
+**Asking the user.** Where this skill says to put something to the user as a
+**decision question**: one question, 2-4 labelled options, each with a one-line
+description of its trade-off, your recommendation first. Use the structured question
+tool of the agent you are running in where there is one (in Claude Code that is
+`AskUserQuestion`); where there is none, write the question and its options as a
+numbered list in your reply and let the user answer with a number. Either way
+"Other" stays open to the user, and **your turn ends on the question**.
+
+**The repository's instruction file.** Where this skill says `CLAUDE.md`, read
+whichever instruction file the repository actually carries - `CLAUDE.md`,
+`AGENTS.md`, or both when both exist.
+
 ## Hard rules
 
 - **Explicit invocation only.** The user must point at a spec, or at the
@@ -23,8 +35,9 @@ settled with the user and are not reopened here.
   quietly replaced.
 - **Never implement what the spec puts out of scope.** A gap you notice on the way
   is a follow-up in the notes, not an extra commit.
-- **Never continue past an unanswered question.** After an `AskUserQuestion` call
-  your turn ends - no further tool calls, no edits. Silence is not an answer.
+- **Never continue past an unanswered question.** After you ask a decision
+  question your turn ends - no further tool calls, no edits. Silence is not an
+  answer.
 - **Never report done on unverified work.** The repo's own checks run before the
   notes are written, and their real outcome goes in the notes.
 - **The notes file is part of the work, not an optional extra.** An implementation
@@ -54,8 +67,8 @@ done
 ```
 
 If nothing comes back, say so and stop. Otherwise read the `Status:` and `#` title
-line of each candidate and put them to the user with `AskUserQuestion`: one
-single-select question, up to 4 options, newest first, each option's `description`
+line of each candidate and put them to the user as a decision question: one
+single-select question, up to 4 options, newest first, each option's description
 naming what the change is and flagging `Status: draft` where the spec was never
 marked agreed. More than 4 candidates: offer the 4 newest and list the rest in your
 message so the user can name one through "Other". **Then end the turn.**
@@ -71,7 +84,8 @@ Before the first edit, read enough that the spec's decisions map onto real code:
 
 State back in a short paragraph what the spec asks for, and anything that has moved
 in the repository since it was written. If the code has drifted so far that a
-decision no longer applies, that is an `AskUserQuestion`, not a judgement call.
+decision no longer applies, that is a decision question for the user, not a
+judgement call.
 
 ## 3. Work the plan, phase by phase
 
