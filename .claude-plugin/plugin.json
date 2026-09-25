@@ -1,7 +1,7 @@
 {
   "name": "sprinx-skills",
   "description": "Sprinx engineering skill set: skills that apply the Sprinx engineering standard to the repository in front of you. Installs as a Claude Code plugin and as Codex skills.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": {
     "name": "Jan Prochazka"
   },
