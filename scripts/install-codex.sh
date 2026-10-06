@@ -93,4 +93,4 @@ fi
 echo
 echo "installed $installed skill(s) into $target"
 [ "$skipped" -eq 0 ] || echo "skipped $skipped - remove them by hand and run again" >&2
-echo "In Codex, run one with \$sx-brainstorming (or let it match on description)."
+echo "In Codex, run one with \$sx-check-basic-standards (or let it match on description)."

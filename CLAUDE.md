@@ -35,8 +35,8 @@ the skill instructions themselves.
 - A skill stands alone: it may mention another skill by name but must not require it.
 - **Skills are agent-agnostic.** A skill runs in Claude Code and in Codex from the same
   file, so it never depends on a tool only one of them has. Where a tool makes the work
-  better, name it as an option and give the fallback in the same breath - as the three
-  workflow skills do for `AskUserQuestion`. The same goes for the repository's own
+  better, name it as an option and give the fallback in the same breath (for example,
+  `AskUserQuestion` where available, otherwise a plain question in the reply). The same goes for the repository's own
   instruction file: a skill that reads one reads `CLAUDE.md` or `AGENTS.md`, whichever
   the target repository carries.
 
